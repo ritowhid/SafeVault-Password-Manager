@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>SafeVault - Your Personal Password Manager</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" href="img/safe_vault.png">
+</head>
+<body>
+  <!-- Navigation -->
+  <nav>
+    <div class="logo">SafeVault</div>
+    <ul>
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- Home Section -->
+  <div id="home" class="container">
+    <h1>Securely Store Your Passwords</h1>
+    <p>Use <strong>SafeVault</strong> to manage your passwords safely and efficiently.</p>
+
+    <!-- Add Password Form -->
+    <div class="add-password">
+      <h2>Add a Password</h2>
+      <form id="password-form">
+        <label for="website">Website:</label>
+        <input type="text" id="website" name="website" placeholder="Enter website">
+
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" placeholder="Enter username">
+
+        <label for="password">Password:</label>
+        <div class="password-wrapper">
+          <input type="password" id="password" name="password" placeholder="Enter password">
+          <img src="./img/show.png" id="input-toggle" class="toggle-input" alt="Show/Hide">
+        </div>
+
+        <!-- Message box -->
+        <div id="form-message" class="form-message"></div>
+
+        <button class="btn" type="submit">Add Password</button>
+      </form>
+    </div>
+
+    <!-- Saved Passwords -->
+    <div class="passwords-section">
+      <h2>Saved Passwords</h2>
+      <table>
+        <!-- Table rows will be generated dynamically -->
+      </table>
+    </div>
+  </div>
+
+  <!-- About Section -->
+  <div id="about" class="section">
+    <h2>About Us</h2>
+    <p>
+      SafeVault started with a simple idea: managing your passwords shouldn’t feel like a chore. 
+      We all use countless apps and websites every day, and trying to remember every single 
+      password can get stressful. SafeVault was built to take that stress away and help you stay secure 
+      without the headache.
+    </p>
+
+    <p>
+      We’ve focused on making everything feel clear, simple, and genuinely helpful. No complicated 
+      menus, no confusing steps—just a clean, easy-to-use experience that feels natural. Our goal is to 
+      create a tool that feels less like “tech” and more like a friendly assistant that quietly has your back.
+    </p>
+
+    <p>
+      Whether you’re a student trying to organize your accounts, a professional managing daily logins, 
+      or someone who simply values online safety, SafeVault aims to be the reliable companion you can 
+      trust to protect your digital world.
+    </p>
+  </div>
+
+  <!-- Contact Section -->
+<div id="contact" class="section">
+  <h2>Contact Us</h2>
+  <p>
+    We’d really love to hear from you. Whether you have a question, a suggestion, 
+    or just want to share your experience with SafeVault, your voice truly helps us 
+    shape the app and make it better for everyone.
+  </p>
+
+  <ul class="contact-info">
+    <li><span class="label">Email:</span> support@safevault.com</li>
+    <li><span class="label">Phone:</span> +880-1234-567890</li>
+    <li><span class="label">Address:</span> Chattogram, Bangladesh</li>
+  </ul>
+
+  <p>
+    You can also follow us on social media to get updates, security tips, and 
+    behind-the-scenes insights. Let’s work together to make your digital world 
+    safer and simpler, one step at a time.
+  </p>
+
+    <!-- Social Media Icons -->
+    <div class="social-icons">
+      <a href="#"><img src="img/facebook.png" alt="Facebook"></a>
+      <a href="#"><img src="img/instagram.png" alt="Instagram"></a>
+      <a href="#"><img src="img/x.png" alt="X"></a>
+      <a href="#"><img src="img/linkedin.png" alt="LinkedIn"></a>
+    </div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,286 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: #f7f8fc;
+  color: #333;
+  padding-top: 70px;
+}
+
+/* Navigation Bar */
+nav {
+  background-color: #4a90e2;
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+}
+
+.logo {
+  font-weight: 700;
+  font-size: 28px;
+  cursor: pointer;
+  color: #fff;
+}
+
+ul {
+  display: flex;
+  align-items: center;
+}
+
+ul li {
+  list-style: none;
+  margin-left: 25px;
+}
+
+ul li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+ul li a:hover {
+  color: #ffd700;
+}
+
+/* Container */
+.container {
+  max-width: 900px;
+  margin: 40px auto;
+  padding: 20px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+h1, h2 {
+  margin-bottom: 15px;
+  color: #4a90e2;
+}
+
+p {
+  margin-bottom: 30px;
+  color: #555;
+}
+
+/* Inputs and form */
+input[type="text"], input[type="password"] {
+  width: 100%;
+  padding: 12px;
+  margin: 8px 0 20px 0;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 16px;
+}
+
+.password-wrapper {
+  position: relative;
+}
+
+.password-wrapper img.toggle-input {
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+}
+
+button.btn {
+  padding: 10px 20px;
+  background-color: #4a90e2;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button.btn:hover {
+  background-color: #357ab8;
+}
+
+/* Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 20px;
+}
+
+th, td {
+  padding: 12px 15px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+  vertical-align: middle;
+}
+
+th {
+  background-color: #4a90e2;
+  color: #fff;
+}
+
+tr:nth-child(even) {
+  background-color: #f1f4fa;
+}
+
+tr:hover {
+  background-color: #dbe4f5;
+}
+
+button.btnsm {
+  padding: 6px 12px;
+  background-color: #ff4c4c;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+button.btnsm:hover {
+  background-color: #cc3a3a;
+}
+
+/* Copy and toggle icons */
+.copy-icon {
+  width: 12px;
+  height: 12px;
+  vertical-align: middle;
+  cursor: pointer;
+  margin-left: 3px;
+}
+
+.toggle-password {
+  width: 15px;
+  height: 15px;
+  cursor: pointer;
+  vertical-align: middle;
+  margin-left: 5px;
+}
+
+.copy-container {
+  display: inline-block;
+  position: relative;
+  vertical-align: super;
+}
+
+.copy-container img.copy-icon {
+  width: 12px;
+  height: 12px;
+  cursor: pointer;
+}
+
+.copy-container .tooltip {
+  visibility: hidden;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 4px;
+  padding: 2px 4px;
+  position: absolute;
+  top: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 10px;
+  white-space: nowrap;
+  opacity: 0;
+  transition: opacity 0.2s;
+  z-index: 1;
+}
+
+.copy-container:hover .tooltip {
+  visibility: visible;
+  opacity: 1;
+}
+
+/* Inline message box for form validation */
+.form-message {
+  margin-top: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  display: none;
+}
+
+.form-message.error {
+  color: #ff4c4c;
+}
+
+.form-message.success {
+  color: #28a745;
+}
+
+/* About & Contact Sections */
+.section {
+  max-width: 900px;
+  margin: 60px auto;
+  padding: 30px;
+  background-color: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+}
+
+.section h2 {
+  color: #4a90e2;
+  margin-bottom: 15px;
+}
+
+.section p, .section ul {
+  color: #555;
+  margin-bottom: 15px;
+}
+
+.section ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.section ul li {
+  margin-bottom: 8px;
+}
+
+/* Contact info labels */
+.contact-info .label {
+  font-weight: 700;
+  color: #000; /* bold black labels */
+  margin-right: 5px;
+}
+
+/* Social media icons */
+.social-icons {
+  margin-top: 20px;
+  text-align: center;   /* center the icons */
+}
+
+.social-icons a {
+  display: inline-block;
+  margin: 0 10px;       /* equal spacing left/right */
+}
+
+.social-icons img {
+  width: 28px;
+  height: 28px;
+  transition: transform 0.3s;
+}
+
+.social-icons img:hover {
+  transform: scale(1.2);
+}
