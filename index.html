@@ -1,121 +1,273 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>SafeVault - Your Personal Password Manager</title>
-  <link rel="stylesheet" href="style.css">
-  <!-- Favicon -->
-  <link rel="icon" type="image/png" href="img/safe_vault.png">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SafeVault - Advanced Password Manager</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="icon" type="image/png" href="img/safe_vault.png">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
 </head>
 <body>
-  <!-- Navigation -->
-  <nav>
-    <div class="logo">SafeVault</div>
-    <button class="menu-toggle" id="menu-toggle">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-    <ul id="nav-menu">
-      <li><a href="#home">Home</a></li>
-      <li><a href="#about">About</a></li>
-      <li><a href="#contact">Contact</a></li>
-    </ul>
-  </nav>
-
-  <!-- Home Section -->
-  <div id="home" class="container">
-    <h1>Securely Store Your Passwords</h1>
-    <p>Use <strong>SafeVault</strong> to manage your passwords safely and efficiently.</p>
-
-    <!-- Add Password Form -->
-    <div class="add-password">
-      <h2>Add a Password</h2>
-      <form id="password-form">
-        <label for="website">Website:</label>
-        <input type="text" id="website" name="website" placeholder="Enter website">
-
-        <label for="username">Email or Username:</label>
-        <input type="text" id="username" name="username" placeholder="Enter email or username">
-
-        <label for="password">Password:</label>
-        <div class="password-wrapper">
-          <input type="password" id="password" name="password" placeholder="Enter password">
-          <img src="./img/show.png" id="input-toggle" class="toggle-input" alt="Show/Hide">
+    <nav>
+        <div class="logo">SafeVault</div>
+        <div class="nav-right">
+            <button class="theme-toggle" id="theme-toggle" title="Toggle Dark Mode">
+                <span class="theme-icon">🌙</span>
+            </button>
+            <button class="menu-toggle" id="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
         </div>
+        <ul id="nav-menu">
+            <li><a href="#" data-page-link="main-menu" class="nav-item">Home</a></li>
+            <li><a href="#" data-page-link="about-us" class="nav-item">About Us</a></li>
+            <li><a href="#" data-page-link="contact-us" class="nav-item">Contact</a></li>
+        </ul>
+    </nav>
 
-        <!-- Message box -->
-        <div id="form-message" class="form-message"></div>
+    <div id="app-container">
+        
+        <section id="main-menu" class="page active">
+            <div class="main-menu-content">
+                <h1 class="app-title"><i class="fas fa-lock"></i> SafeVault</h1>
+                <p class="app-description">Your secure, simple, and reliable password manager.</p>
+                
+                <div class="menu-grid">
+                    <button class="menu-button" data-page-target="add-password-page">
+                        <i class="fas fa-plus-circle"></i> Add Password
+                    </button>
+                    <button class="menu-button" data-page-target="generate-password-page">
+                        <i class="fas fa-key"></i> Generate Password
+                    </button>
+                    <button class="menu-button" data-page-target="saved-passwords-page">
+                        <i class="fas fa-list-ul"></i> Saved Passwords
+                    </button>
+                    <button class="menu-button" data-page-target="notes-page">
+                        <i class="fas fa-sticky-note"></i> Secure Notes
+                    </button>
+                </div>
+            </div>
+        </section>
 
-        <button class="btn" type="submit">Add Password</button>
-      </form>
-    </div>
+        <section id="add-password-page" class="page">
+            <header class="page-header">
+                <button class="back-btn" data-page-target="main-menu"><i class="fas fa-arrow-left"></i> Back</button>
+                <h2><i class="fas fa-plus-circle"></i> Add/Edit Password</h2>
+            </header>
+            
+            <div class="feature-content">
+                <div class="add-password-form-section">
+                    <h3 id="form-title">Enter Account Details</h3>
+                    <form id="password-form">
+                        <input type="hidden" id="edit-index" value="">
+                        
+                        <label for="website">Website:</label>
+                        <input type="text" id="website" name="website" placeholder="e.g., google.com" required>
 
-    <!-- Saved Passwords -->
-    <div class="passwords-section">
-      <h2>Saved Passwords</h2>
-      <div class="table-wrapper">
-        <table>
-          <!-- Table rows will be generated dynamically -->
-        </table>
-      </div>
-    </div>
-  </div>
+                        <label for="username">Email or Username:</label>
+                        <input type="text" id="username" name="username" placeholder="e.g., yourname@email.com" required>
 
-  <!-- About Section -->
-  <div id="about" class="section">
-    <h2>About Us</h2>
-    <p>
-      SafeVault started with a simple idea: managing your passwords shouldn't feel like a chore. 
-      We all use countless apps and websites every day, and trying to remember every single 
-      password can get stressful. SafeVault was built to take that stress away and help you stay secure 
-      without the headache.
-    </p>
+                        <label for="password">Password:</label>
+                        <div class="password-wrapper">
+                            <input type="password" id="password" name="password" placeholder="Enter password" required>
+                            <button type="button" id="input-toggle" class="toggle-btn" aria-label="Show/Hide Password"><i class="far fa-eye"></i></button>
+                        </div>
 
-    <p>
-      We've focused on making everything feel clear, simple, and genuinely helpful. No complicated 
-      menus, no confusing steps—just a clean, easy-to-use experience that feels natural. Our goal is to 
-      create a tool that feels less like "tech" and more like a friendly assistant that quietly has your back.
-    </p>
+                        <div class="strength-container">
+                            <div class="strength-bar">
+                                <div class="strength-fill" id="strength-fill"></div>
+                            </div>
+                            <span class="strength-text" id="strength-text">Enter password to check strength</span>
+                        </div>
+                        
+                        <div id="form-message" class="form-message"></div>
 
-    <p>
-      Whether you're a student trying to organize your accounts, a professional managing daily logins, 
-      or someone who simply values online safety, SafeVault aims to be the reliable companion you can 
-      trust to protect your digital world.
-    </p>
-  </div>
+                        <div class="form-buttons">
+                            <button class="btn" type="submit" id="submit-btn"><i class="fas fa-save"></i> Save Password</button>
+                            <button class="btn-cancel" type="button" id="cancel-btn" style="display: none;"><i class="fas fa-times"></i> Cancel Edit</button>
+                        </div>
+                    </form>
+                </div>
+                
+                <div class="saved-passwords-list-section">
+                    <hr>
+                    <h3><i class="fas fa-list-ul"></i> All Saved Accounts (<span id="password-count-list">0</span>)</h3>
+                    <input type="text" id="search-input-add" placeholder="🔍 Filter accounts..." class="search-input">
+                    
+                    <div class="table-wrapper">
+                        <table id="passwords-table-add">
+                            </table>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-  <!-- Contact Section -->
-  <div id="contact" class="section">
-    <h2>Contact Us</h2>
-    <p>
-      We'd really love to hear from you. Whether you have a question, a suggestion, 
-      or just want to share your experience with SafeVault, your voice truly helps us 
-      shape the app and make it better for everyone.
-    </p>
+        <section id="generate-password-page" class="page">
+            <header class="page-header">
+                <button class="back-btn" data-page-target="main-menu"><i class="fas fa-arrow-left"></i> Back</button>
+                <h2><i class="fas fa-key"></i> Generate Secure Password</h2>
+            </header>
+            
+            <div class="feature-content">
+                <div class="generator-container">
+                    
+                    <div class="generated-output">
+                        <input type="text" id="generated-password" readonly placeholder="Click 'Generate' to create a password">
+                        <button type="button" id="copy-generated-btn" class="btn-secondary" title="Copy to Clipboard">
+                            <i class="fas fa-copy"></i> Copy
+                        </button>
+                    </div>
 
-    <ul class="contact-info">
-      <li><span class="label">Email:</span> support@safevault.com</li>
-      <li><span class="label">Phone:</span> +880-1234-567890</li>
-      <li><span class="label">Address:</span> Feni, Bangladesh</li>
-    </ul>
+                    <div class="generator-options-card">
+                        <h3>Password Criteria</h3>
+                        <div class="option-grid">
+                            <label class="range-label">
+                                <span id="length-value">16</span> Characters
+                                <input type="range" id="gen-length-range" min="8" max="32" value="16">
+                            </label>
+                            
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="gen-uppercase" checked> Uppercase (A-Z)
+                            </label>
+                            
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="gen-lowercase" checked> Lowercase (a-z)
+                            </label>
+                            
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="gen-numbers" checked> Numbers (0-9)
+                            </label>
+                            
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="gen-symbols" checked> Symbols (!@#$...)
+                            </label>
+                        </div>
+                        <button class="btn" id="generate-password-main-btn"><i class="fas fa-dice"></i> Generate Password</button>
+                    </div>
+                </div>
+            </div>
+        </section>
 
-    <p>
-      You can also follow us on social media to get updates, security tips, and 
-      behind-the-scenes insights. Let's work together to make your digital world 
-      safer and simpler, one step at a time.
-    </p>
+        <section id="saved-passwords-page" class="page">
+            <header class="page-header">
+                <button class="back-btn" data-page-target="main-menu"><i class="fas fa-arrow-left"></i> Back</button>
+                <h2><i class="fas fa-list-ul"></i> All Saved Passwords</h2>
+            </header>
+            
+            <div class="feature-content">
+                <div class="actions-bar">
+                    <input type="text" id="search-input-main" placeholder="🔍 Search by website or email..." class="search-input">
+                    <div class="action-buttons">
+                        <button class="btn-secondary" id="export-btn"><i class="fas fa-download"></i> Export</button>
+                        <button class="btn-secondary" id="import-btn"><i class="fas fa-upload"></i> Import</button>
+                        <input type="file" id="import-file" accept=".json" style="display: none;">
+                    </div>
+                </div>
+                
+                <p>Total Saved Accounts: <strong id="password-count-main">0</strong></p>
 
-    <!-- Social Media Icons -->
-    <div class="social-icons">
-      <a href="#"><img src="img/facebook.png" alt="Facebook"></a>
-      <a href="#"><img src="img/instagram.png" alt="Instagram"></a>
-      <a href="#"><img src="img/x.png" alt="X"></a>
-      <a href="#"><img src="img/linkedin.png" alt="LinkedIn"></a>
-    </div>
-  </div>
+                <div class="table-wrapper">
+                    <table id="passwords-table-main">
+                        </table>
+                </div>
+            </div>
+        </section>
 
-  <script src="script.js"></script>
+        <section id="notes-page" class="page">
+            <header class="page-header">
+                <button class="back-btn" data-page-target="main-menu"><i class="fas fa-arrow-left"></i> Back</button>
+                <h2><i class="fas fa-sticky-note"></i> Secure Notes</h2>
+            </header>
+            
+            <div class="feature-content">
+                <form id="note-form">
+                    <input type="hidden" id="note-edit-index" value="">
+                    <label for="note-title">Note Title:</label>
+                    <input type="text" id="note-title" placeholder="A descriptive title for your note" required>
+                    
+                    <label for="note-content">Note Content:</label>
+                    <textarea id="note-content" rows="6" placeholder="Write your secret note here..." required></textarea>
+                    
+                    <div id="note-message" class="form-message"></div>
+                    
+                    <div class="form-buttons">
+                        <button class="btn" type="submit" id="note-submit-btn"><i class="fas fa-plus"></i> Save Note</button>
+                        <button class="btn-cancel" type="button" id="note-cancel-btn" style="display: none;"><i class="fas fa-times"></i> Cancel Edit</button>
+                    </div>
+                </form>
+
+                <hr style="margin: 30px 0;">
+                
+                <h3><i class="fas fa-clipboard-list"></i> Saved Notes (<span id="note-count">0</span>)</h3>
+                <div id="notes-list" class="notes-list">
+                    </div>
+            </div>
+        </section>
+
+        <section id="about-us" class="section page">
+            <header class="page-header">
+                <button class="back-btn" data-page-target="main-menu"><i class="fas fa-arrow-left"></i> Back</button>
+                <h2><i class="fas fa-info-circle"></i> About SafeVault</h2>
+            </header>
+            <div class="feature-content">
+                <p>
+                    SafeVault started with a simple idea: managing your passwords shouldn't feel like a chore. 
+                    We all use countless apps and websites every day, and trying to remember every single 
+                    password can get stressful. SafeVault was built to take that stress away and help you stay secure 
+                    without the headache.
+                </p>
+
+                <p>
+                    We've focused on making everything feel clear, simple, and genuinely helpful. No complicated 
+                    menus, no confusing steps—just a clean, easy-to-use experience that feels natural. Our goal is to 
+                    create a tool that feels less like "tech" and more like a friendly assistant that quietly has your back.
+                </p>
+
+                <p>
+                    Whether you're a student trying to organize your accounts, a professional managing daily logins, 
+                    or someone who simply values online safety, SafeVault aims to be the reliable companion you can 
+                    trust to protect your digital world.
+                </p>
+            </div>
+        </section>
+
+        <section id="contact-us" class="section page">
+            <header class="page-header">
+                <button class="back-btn" data-page-target="main-menu"><i class="fas fa-arrow-left"></i> Back</button>
+                <h2><i class="fas fa-headset"></i> Contact Us</h2>
+            </header>
+            <div class="feature-content">
+                <p>
+                    We'd really love to hear from you. Whether you have a question, a suggestion, 
+                    or just want to share your experience with SafeVault, your voice truly helps us 
+                    shape the app and make it better for everyone.
+                </p>
+
+                <ul class="contact-info">
+                    <li><span class="label"><i class="fas fa-envelope"></i> Email:</span> support@safevault.com</li>
+                    <li><span class="label"><i class="fas fa-phone"></i> Phone:</span> +880-1234-567890</li>
+                    <li><span class="label"><i class="fas fa-map-marker-alt"></i> Address:</span> Feni, Bangladesh</li>
+                </ul>
+
+                <p>
+                    You can also follow us on social media to get updates, security tips, and 
+                    behind-the-scenes insights.
+                </p>
+
+                <div class="social-icons">
+                    <a href="#" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                    <a href="#" aria-label="X"><i class="fab fa-twitter"></i></a>
+                    <a href="#" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </section>
+
+    </div> <script src="script.js"></script>
+
+    
 </body>
 </html>
