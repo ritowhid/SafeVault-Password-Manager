@@ -39,24 +39,42 @@ nav {
   color: #fff;
 }
 
-ul {
+/* Hamburger Menu */
+.menu-toggle {
+  display: none;
+  flex-direction: column;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+}
+
+.menu-toggle span {
+  width: 25px;
+  height: 3px;
+  background-color: #fff;
+  margin: 3px 0;
+  transition: 0.3s;
+}
+
+nav ul {
   display: flex;
   align-items: center;
 }
 
-ul li {
+nav ul li {
   list-style: none;
   margin-left: 25px;
 }
 
-ul li a {
+nav ul li a {
   text-decoration: none;
   color: #fff;
   font-weight: 500;
   transition: color 0.3s;
 }
 
-ul li a:hover {
+nav ul li a:hover {
   color: #ffd700;
 }
 
@@ -73,6 +91,14 @@ ul li a:hover {
 h1, h2 {
   margin-bottom: 15px;
   color: #4a90e2;
+}
+
+h1 {
+  font-size: 2rem;
+}
+
+h2 {
+  font-size: 1.5rem;
 }
 
 p {
@@ -113,6 +139,8 @@ button.btn {
   font-weight: 600;
   cursor: pointer;
   transition: 0.3s;
+  width: 100%;
+  font-size: 16px;
 }
 
 button.btn:hover {
@@ -120,10 +148,15 @@ button.btn:hover {
 }
 
 /* Table */
+.table-wrapper {
+  overflow-x: auto;
+  margin-top: 20px;
+}
+
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 20px;
+  min-width: 600px;
 }
 
 th, td {
@@ -154,6 +187,7 @@ button.btnsm {
   border-radius: 6px;
   cursor: pointer;
   transition: 0.3s;
+  font-size: 14px;
 }
 
 button.btnsm:hover {
@@ -215,17 +249,23 @@ button.btnsm:hover {
 /* Inline message box for form validation */
 .form-message {
   margin-top: 10px;
+  margin-bottom: 15px;
   font-size: 14px;
   font-weight: 600;
   display: none;
+  padding: 10px;
+  border-radius: 6px;
+  text-align: center;
 }
 
 .form-message.error {
   color: #ff4c4c;
+  background-color: #ffe6e6;
 }
 
 .form-message.success {
   color: #28a745;
+  background-color: #e6f9e6;
 }
 
 /* About & Contact Sections */
@@ -251,28 +291,40 @@ button.btnsm:hover {
 .section ul {
   list-style: none;
   padding-left: 0;
+  display: block;
 }
 
 .section ul li {
   margin-bottom: 8px;
+  margin-left: 0;
 }
 
 /* Contact info labels */
+.contact-info {
+  display: block !important;
+  flex-direction: column !important;
+}
+
+.contact-info li {
+  display: block;
+  margin-left: 0 !important;
+}
+
 .contact-info .label {
   font-weight: 700;
-  color: #000; /* bold black labels */
+  color: #000;
   margin-right: 5px;
 }
 
 /* Social media icons */
 .social-icons {
   margin-top: 20px;
-  text-align: center;   /* center the icons */
+  text-align: center;
 }
 
 .social-icons a {
   display: inline-block;
-  margin: 0 10px;       /* equal spacing left/right */
+  margin: 0 10px;
 }
 
 .social-icons img {
@@ -283,4 +335,172 @@ button.btnsm:hover {
 
 .social-icons img:hover {
   transform: scale(1.2);
+}
+
+/* ========== RESPONSIVE DESIGN ========== */
+
+/* Tablets (768px and below) */
+@media screen and (max-width: 768px) {
+  body {
+    padding-top: 60px;
+  }
+
+  nav {
+    padding: 12px 20px;
+  }
+
+  .logo {
+    font-size: 24px;
+  }
+
+  .menu-toggle {
+    display: flex;
+  }
+
+  nav ul {
+    position: absolute;
+    top: 60px;
+    left: 0;
+    width: 100%;
+    background-color: #4a90e2;
+    flex-direction: column;
+    align-items: center;
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+  }
+
+  nav ul.active {
+    max-height: 300px;
+    padding: 20px 0;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+  }
+
+  .container, .section {
+    margin: 20px 15px;
+    padding: 15px;
+  }
+
+  h1 {
+    font-size: 1.5rem;
+  }
+
+  h2 {
+    font-size: 1.3rem;
+  }
+
+  table {
+    min-width: 500px;
+  }
+
+  th, td {
+    padding: 10px 8px;
+    font-size: 14px;
+  }
+
+  .social-icons img {
+    width: 24px;
+    height: 24px;
+  }
+}
+
+/* Mobile phones (480px and below) */
+@media screen and (max-width: 480px) {
+  body {
+    padding-top: 55px;
+  }
+
+  nav {
+    padding: 10px 15px;
+  }
+
+  .logo {
+    font-size: 20px;
+  }
+
+  nav ul {
+    top: 55px;
+  }
+
+  h1 {
+    font-size: 1.3rem;
+  }
+
+  h2 {
+    font-size: 1.1rem;
+  }
+
+  p {
+    font-size: 14px;
+  }
+
+  input[type="text"], input[type="password"] {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  button.btn {
+    padding: 10px;
+    font-size: 14px;
+  }
+
+  table {
+    min-width: 450px;
+  }
+
+  th, td {
+    padding: 8px 6px;
+    font-size: 12px;
+  }
+
+  button.btnsm {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+
+  .copy-icon {
+    width: 10px;
+    height: 10px;
+  }
+
+  .toggle-password {
+    width: 13px;
+    height: 13px;
+  }
+
+  .social-icons img {
+    width: 22px;
+    height: 22px;
+  }
+
+  .social-icons a {
+    margin: 0 8px;
+  }
+}
+
+/* Very small devices (360px and below) */
+@media screen and (max-width: 360px) {
+  .logo {
+    font-size: 18px;
+  }
+
+  h1 {
+    font-size: 1.2rem;
+  }
+
+  h2 {
+    font-size: 1rem;
+  }
+
+  table {
+    min-width: 400px;
+  }
+
+  th, td {
+    padding: 6px 4px;
+    font-size: 11px;
+  }
 }

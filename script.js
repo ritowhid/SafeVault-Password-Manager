@@ -1,3 +1,18 @@
+// Mobile menu toggle
+const menuToggle = document.getElementById('menu-toggle');
+const navMenu = document.getElementById('nav-menu');
+
+menuToggle.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+});
+
+// Close menu when clicking on a link
+navMenu.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+        navMenu.classList.remove('active');
+    });
+});
+
 // Mask a password with asterisks
 function maskPassword(pass) {
     return "*".repeat(pass.length);
@@ -30,7 +45,7 @@ const showPasswords = () => {
         tb.innerHTML = `
             <tr>
                 <th>Website</th>
-                <th>Username</th>
+                <th>Email/Username</th>
                 <th>Password</th>
                 <th>Delete</th>
             </tr>
@@ -151,6 +166,11 @@ document.querySelector(".btn").addEventListener("click", (e) => {
     messageBox.textContent = "✅ Password saved successfully!";
     messageBox.className = "form-message success";
     messageBox.style.display = "block";
+
+    // Auto-hide success message after 3 seconds
+    setTimeout(() => {
+        messageBox.style.display = "none";
+    }, 3000);
 
     showPasswords(); // refresh table after saving
 });
